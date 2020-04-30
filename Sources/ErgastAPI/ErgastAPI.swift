@@ -11,7 +11,7 @@ struct ErgastAPI {
         
     }
     
-    func doSomething() {
-        
+    public func doSomething() {
+        print(".")
     }
 }
