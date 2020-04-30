@@ -1,3 +1,11 @@
+import Foundation
+import CloudKit
+
 struct ErgastAPI {
-    var text = "Hello, World!"
+   let containerIdentifier = "iCloud.ErgastAPI"
+   let secondContainer = CKContainer(identifier: containerIdentifier)
+    
+    init() {
+        
+    }
 }
