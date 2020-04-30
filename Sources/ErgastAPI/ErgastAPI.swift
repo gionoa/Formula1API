@@ -5,7 +5,7 @@ struct ErgastAPI {
     static let shared = ErgastAPI()
     
     let containerIdentifier = "iCloud.ErgastAPI"
-    let secondContainer = CKContainer(identifier: containerIdentifier)
+   // let secondContainer = CKContainer(identifier: containerIdentifier)
     
     init() {
         
