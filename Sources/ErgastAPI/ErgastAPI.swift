@@ -1,7 +1,7 @@
 import Foundation
 import CloudKit
 
-struct ErgastAPI {
+public struct ErgastAPI {
     static let shared = ErgastAPI()
     
     let containerIdentifier = "iCloud.ErgastAPI"
