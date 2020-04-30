@@ -2,7 +2,7 @@ import Foundation
 import CloudKit
 
 struct ErgastAPI {
-    let shared = ErgastAPI()
+    static let shared = ErgastAPI()
     
     let containerIdentifier = "iCloud.ErgastAPI"
     let secondContainer = CKContainer(identifier: containerIdentifier)
@@ -12,6 +12,10 @@ struct ErgastAPI {
     }
     
     public func doSomething() {
+        print(".")
+    }
+    
+    public static func doSomethingButStatic() {
         print(".")
     }
 }
