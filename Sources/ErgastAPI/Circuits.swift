@@ -8,11 +8,11 @@
 import Foundation
 
 // MARK: - Circuits
-struct CircuitsResult: Codable {
+public struct CircuitsResult: Codable {
     let circuits: [Circuit]
 }
 
-struct Circuit: Codable {
+public struct Circuit: Codable {
     let circuitID: Int
     let circuitRef, name, location, country: String
     let lat, lng: Double
