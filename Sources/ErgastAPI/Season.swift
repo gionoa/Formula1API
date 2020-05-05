@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Season
-enum Season {
+public enum Season {
     case all
     case year(Int)
     
