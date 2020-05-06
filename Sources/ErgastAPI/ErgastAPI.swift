@@ -19,7 +19,7 @@ public struct ErgastAPI {
     
     public static func allCircuits(_ completion: @escaping (Result<AllCircuits, ErgastAPIError>) -> Void) {
         ErgastAPIService.fetch(.circuits,
-                               for: .all,
+                               for: nil,
                                decodingType: AllCircuits.self) { result in
             switch result {
             case .success(let response):
@@ -31,10 +31,5 @@ public struct ErgastAPI {
             }
         }
     }
-//
-//    private static func parseResponse<T: Decodable, U: Error>(_ result: Result<T, U>) -> Result<T, U> {
-//
-//
-//    }
 }
 

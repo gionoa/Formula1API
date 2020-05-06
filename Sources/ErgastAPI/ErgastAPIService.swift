@@ -42,7 +42,7 @@ enum ErgastAPIService {
     ///   - decodingType: Decodable-conforming object to be used for serializing JSON response.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
     internal static func fetch<T>(_ subPath: Path,
-                                    for season: Season,
+                                    for season: Season?,
                                     session: URLSession = URLSession.shared,
                                     decodingType: T.Type,
                                     _ completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) where T: Decodable {
@@ -64,7 +64,6 @@ enum ErgastAPIService {
                 
             case .failure(let error):
                 print(error)
-                fatalError()
             }
         }
     }
