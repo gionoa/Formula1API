@@ -30,8 +30,9 @@ enum Path {
     
     /// Seasons throughout history.
     case seasons
-     
-    
+}
+
+extension Path {    
     /// Function that generates the path for an endpoint within the Ergast API.
     /// - Parameter season: Season specifier (all, specific season)
     /// - Returns: String to be added to the Endpoint path.
@@ -54,4 +55,3 @@ enum Path {
         }
     }
 }
-
