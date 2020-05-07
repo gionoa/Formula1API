@@ -14,6 +14,7 @@ public struct AllCircuits: Codable {
         case data = "MRData"
     }
 }
+
 #warning("Remove unnecessary objects")
 struct AllCircuitData: Codable {
     let xmlns: String

@@ -41,17 +41,17 @@ extension Path {
     func subPath(for season: Season? = nil) -> String {
         switch self {
         case .circuits:
-            return "\(season?.query())/circuits.json"
+            return "\(season?.query() ?? "")/circuits.json"
         case .constructorStandings:
-            return "\(season?.query())/constructorStandings.json"
+            return "\(season?.query() ?? "")/constructorStandings.json"
         case .drivers:
-            return "\(season?.query())/driverStandings.json"
+            return "\(season?.query() ?? "")/driverStandings.json"
         case .driverStandings:
             return "/driverStandings.json"
         case .results:
             return "/results.json"
         case .raceStandings:
-            return "\(String(describing: season?.query()))/results.json"
+            return "\(season?.query() ?? "")/results.json"
         case .seasons:
             return "/seasons.json"
         }
