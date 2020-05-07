@@ -12,7 +12,9 @@ public struct ErgastAPI {
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020). 
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func circuits(for season: Season, completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+    public static func circuits(for season: SeasonYear,
+                                completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+        
         ErgastAPIService.fetch(.circuits,
                                for: season,
                                decodingType: Circuits.self) { result in
@@ -40,6 +42,12 @@ public struct ErgastAPI {
                 completion(.failure(error))
             }
         }
+    }
+    
+    public static func constructors(for season: SeasonYear,
+                                    completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+    
+        
     }
 }
 
