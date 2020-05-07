@@ -44,10 +44,16 @@ public struct ErgastAPI {
         }
     }
     
-    public static func constructors(for season: SeasonYear,
-                                    completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
-    
-        
+    public static func seasons(completion: @escaping (Result<Seasons, ErgastAPIError>) -> Void) {
+        ErgastAPIService.fetch(.seasons, decodingType: Seasons.self) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
 
