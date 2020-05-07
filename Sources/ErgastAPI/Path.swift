@@ -34,11 +34,11 @@ enum Path {
     case seasons
 }
 
-extension Path {    
+extension Path {
     /// Function that generates the path for an endpoint within the Ergast API.
     /// - Parameter season: Season specifier (all, specific season)
     /// - Returns: String to be added to the Endpoint path.
-    func subPath(for season: Season? = nil) -> String {
+    private func subPath(for season: Season? = nil) -> String {
         switch self {
         case .circuits:
             return "\(season?.query() ?? "")/circuits.json"

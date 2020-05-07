@@ -16,8 +16,8 @@ struct Endpoint {
     /// - Parameters:
     ///   - path: Specify a path, mapping to a specific endpoint of the Ergast REST API.
     ///   - season: Specify either all historical circuits, or circuits for a specific year.
-    init(with path: Path, for season: Season?) {
-        urlPath = path.urlPath(for: season ?? nil)
+    init(with path: Path, for season: Season? = nil) {
+        urlPath = path.urlPath(for: season)
     }
 }
 
