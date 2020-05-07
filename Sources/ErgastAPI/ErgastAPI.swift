@@ -17,10 +17,10 @@ public struct ErgastAPI {
         }
     }
     
-    public static func allCircuits(completion: @escaping (Result<AllCircuits, ErgastAPIError>) -> Void) {
+    public static func allCircuits(completion: @escaping (Result<YearCircuits, ErgastAPIError>) -> Void) {
         ErgastAPIService.fetch(.circuits,
                                for: nil,
-                               decodingType: AllCircuits.self) { result in
+                               decodingType: YearCircuits.self) { result in
             switch result {
             case .success(let response):
                 print(response)

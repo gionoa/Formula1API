@@ -29,7 +29,7 @@ struct YearCircuitData: Codable {
 }
 
 struct YearCircuitTable: Codable {
-    let season: String
+    let season: String?
     let circuits: [YearCircuit]
 
     enum CodingKeys: String, CodingKey {
