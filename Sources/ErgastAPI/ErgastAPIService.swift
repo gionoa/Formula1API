@@ -22,27 +22,23 @@ enum ErgastAPIService {
                                  completion: @escaping ((Result<Data, ErgastAPIError>) -> Void))
     {
         session.dataTask(with: url) { data, response, error in
-            #warning("Handle the rest of networking")
-            
-            if let error = error,
-                   data == nil {
-                completion(.failure(.network(error.localizedDescription)))
+            guard let data = data, error == nil else {
+                if let error = error {
+                    completion(.failure(.network(error.localizedDescription)))
+                } else {
+                    completion(.failure(.data("Failed to generate data.")))
+                }
                 return
             }
-        
-            if let data = data {
-                completion(.success(data))
-
-            }
+            completion(.success(data))
         }
         .resume()
     }
     
-    
     /// Callback-based networking fetch function. Calls the data task function and decodes the JSON response.
     /// - Parameters:
     ///   - subPath: Path enum case to indicate which endpoint you wish to fetch from.
-    ///   - season: Season enum case to indicate whether you wish to fetch all historical data, or for a specific year.
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020). Fetches data for all historical seasons of given endpoint if nil.
     ///   - session: URLSession instance (URLSession.shared singleton by default)
     ///   - decodingType: Decodable-conforming object to be used for serializing JSON response.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.

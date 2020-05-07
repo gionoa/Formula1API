@@ -5,31 +5,32 @@
 //  Created by Giovanni Noa on 5/5/20.
 //
 
-import Foundation
-
-public struct AllCircuits: Codable {
-    let data: AllCircuitData
+/// Codable struct, used for serializing JSON from the Circuits endpoint.
+public struct Circuits: Codable {
+    let data: CircuitData
 
     enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-#warning("Remove unnecessary objects")
-struct AllCircuitData: Codable {
-    let xmlns: String
-    let series: String
+struct CircuitData: Codable {
     let url: String
-    let limit, offset, total: String
-    let circuitTable: AllCircuitTable
+    let limit: String
+    let offset: String
+    let total: String
+    let circuitTable: CircuitTable
 
     enum CodingKeys: String, CodingKey {
-        case xmlns, series, url, limit, offset, total
+        case url
+        case limit
+        case offset
+        case total
         case circuitTable = "CircuitTable"
     }
 }
 
-struct AllCircuitTable: Codable {
+struct CircuitTable: Codable {
     let circuits: [Circuit]
 
     enum CodingKeys: String, CodingKey {
@@ -37,21 +38,21 @@ struct AllCircuitTable: Codable {
     }
 }
 
-public struct Circuit: Codable {
+struct Circuit: Codable {
     let circuitID: String
-    let url: String
     let circuitName: String
     let location: Location
 
     enum CodingKeys: String, CodingKey {
         case circuitID = "circuitId"
-        case url, circuitName
+        case circuitName
         case location = "Location"
     }
 }
 
 struct Location: Codable {
-    let lat, long, locality, country: String
+    let lat: String
+    let long: String
+    let locality: String
+    let country: String
 }
-
-

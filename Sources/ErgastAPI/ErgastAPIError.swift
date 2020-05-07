@@ -18,4 +18,7 @@ public enum ErgastAPIError: Error {
     
     /// A parsing/decoding error.
     case parsing(String)
+    
+    /// An error for when error is nil, and data failed to be fetched, 
+    case data(String)
 }
