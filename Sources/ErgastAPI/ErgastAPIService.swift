@@ -19,16 +19,21 @@ enum ErgastAPIService {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     private static func dataTask(_ url: URL,
                                  _ session: URLSession,
-                                 _ completion: @escaping ((Result<Data, ErgastAPIError>) -> Void))
+                                 completion: @escaping ((Result<Data, ErgastAPIError>) -> Void))
     {
         session.dataTask(with: url) { data, response, error in
             #warning("Handle the rest of networking")
-            guard let data = data, error == nil else {
-                completion(.failure(.network(error!.localizedDescription)))
+            
+            if let error = error,
+                   data == nil {
+                completion(.failure(.network(error.localizedDescription)))
                 return
             }
-            
-            completion(.success(data))
+        
+            if let data = data {
+                completion(.success(data))
+
+            }
         }
         .resume()
     }
@@ -41,11 +46,11 @@ enum ErgastAPIService {
     ///   - session: URLSession instance (URLSession.shared singleton by default)
     ///   - decodingType: Decodable-conforming object to be used for serializing JSON response.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
-    internal static func fetch<T>(_ subPath: Path,
-                                    for season: Season?,
-                                    session: URLSession = URLSession.shared,
+    internal static func fetch<T: Decodable>(_ subPath: Path,
+                                    for season: Season? = nil,
                                     decodingType: T.Type,
-                                    _ completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) where T: Decodable {
+                                    session: URLSession = URLSession.shared,
+                                    completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
         
         let endpoint = Endpoint(with: subPath, for: season)
         let url = endpoint.url
@@ -64,6 +69,7 @@ enum ErgastAPIService {
                 
             case .failure(let error):
                 print(error)
+                completion(.failure(error))
             }
         }
     }

@@ -10,6 +10,8 @@ import Foundation
 // MARK: - Path
 /// Enum containing the sub-path for specifying an endpoint within the Ergast API.
 enum Path {
+    private var basePath: String { "/api/f1" }
+
     /// Circuits (all, specific season)
     case circuits
     
@@ -36,22 +38,26 @@ extension Path {
     /// Function that generates the path for an endpoint within the Ergast API.
     /// - Parameter season: Season specifier (all, specific season)
     /// - Returns: String to be added to the Endpoint path.
-    func subPath(for season: Season) -> String {
+    func subPath(for season: Season? = nil) -> String {
         switch self {
         case .circuits:
-            return "\(season.query())/circuits.json"
+            return "\(season?.query())/circuits.json"
         case .constructorStandings:
-            return "\(season.query())/constructorStandings.json"
+            return "\(season?.query())/constructorStandings.json"
         case .drivers:
-            return "\(season.query())/driverStandings.json"
+            return "\(season?.query())/driverStandings.json"
         case .driverStandings:
             return "/driverStandings.json"
         case .results:
             return "/results.json"
         case .raceStandings:
-            return "\(season.query())/results.json"
+            return "\(String(describing: season?.query()))/results.json"
         case .seasons:
             return "/seasons.json"
         }
+    }
+    
+    func urlPath(for season: Season?) -> String {
+            return basePath + subPath(for: season)
     }
 }

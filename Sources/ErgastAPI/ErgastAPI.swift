@@ -2,7 +2,7 @@ import Foundation
 import CloudKit
 
 public struct ErgastAPI {
-    public static func circuits(for season: Season, _ completion: @escaping (Result<YearCircuits, ErgastAPIError>) -> Void) {
+    public static func circuits(for season: Season, completion: @escaping (Result<YearCircuits, ErgastAPIError>) -> Void) {
         ErgastAPIService.fetch(.circuits,
                                for: season,
                                decodingType: YearCircuits.self) { result in
@@ -17,7 +17,7 @@ public struct ErgastAPI {
         }
     }
     
-    public static func allCircuits(_ completion: @escaping (Result<AllCircuits, ErgastAPIError>) -> Void) {
+    public static func allCircuits(completion: @escaping (Result<AllCircuits, ErgastAPIError>) -> Void) {
         ErgastAPIService.fetch(.circuits,
                                for: nil,
                                decodingType: AllCircuits.self) { result in
