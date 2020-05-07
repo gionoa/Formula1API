@@ -23,7 +23,7 @@ class EndpointTests: XCTestCase {
     }
     
     func test_url_allCircuits_success() {
-        let endpoint = Endpoint(with: .circuits, for: .all)
+        let endpoint = Endpoint(with: .circuits, for: nil)
         
         let url = endpoint.url.absoluteString
         

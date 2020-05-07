@@ -20,16 +20,16 @@ final class ErgastAPITests: XCTestCase {
     static var allTests = [(String, ErgastAPITests)]()
     
     func test_circuit_all_shouldSucceed() {
-        ErgastAPI.circuits(for: .all) { result in
-            switch result {
-            case .success(let circuits):
-                XCTAssert(circuits.count > 0)
-                print(circuits)
-                
-            case .failure(let error):
-                print(error)
-                fatalError()
-            }
-        }
+//        ErgastAPI.circuits(for: nil) { result in
+//            switch result {
+//            case .success(let circuits):
+//                XCTAssert(circuits.count > 0)
+//                print(circuits)
+//                
+//            case .failure(let error):
+//                print(error)
+//                fatalError()
+//            }
+//        }
     }
 }
