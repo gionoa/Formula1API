@@ -16,13 +16,7 @@ public struct ErgastAPI {
         ErgastAPIService.fetch(.circuits,
                                for: season,
                                decodingType: Circuits.self) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(response))
-                
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result)
         }
     }
     
@@ -32,13 +26,7 @@ public struct ErgastAPI {
         ErgastAPIService.fetch(.circuits,
                                for: nil,
                                decodingType: Circuits.self) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(response))
-                
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result)
         }
     }
 }
