@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Ergast API Service
+// MARK: - URLSession
 /// Ergast service for interacting with the Ergast endpoints within the ErgastAPI package.
     // MARK: - Static Networking Functions
 
