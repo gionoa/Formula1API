@@ -44,15 +44,10 @@ public struct ErgastAPI {
         }
     }
     
+    // Fetches Formula 1 Seasons throughout history.
     public static func seasons(completion: @escaping (Result<Seasons, ErgastAPIError>) -> Void) {
         ErgastAPIService.fetch(.seasons, decodingType: Seasons.self) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(response))
-                
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result)
         }
     }
 }
