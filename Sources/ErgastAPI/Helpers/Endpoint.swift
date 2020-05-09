@@ -8,7 +8,7 @@
 import Foundation
 
 /// Indicates URL components for the Ergast REST API.
-enum ErgastEndpoint {
+internal enum ErgastEndpoint {
     /// URL scheme.
     static let scheme = "https"
     

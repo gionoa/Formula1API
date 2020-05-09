@@ -29,5 +29,12 @@ public struct ErgastAPI {
             completion(result)
         }
     }
+    
+    // Fetches Formula 1 Seasons throughout history.
+    public static func seasons(completion: @escaping (Result<Seasons, ErgastAPIError>) -> Void) {
+        URLSession.shared.fetch(.seasons) { result in
+            completion(result)
+        }
+    }
 }
 
