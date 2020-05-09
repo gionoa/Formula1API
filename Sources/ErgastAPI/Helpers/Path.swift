@@ -8,8 +8,8 @@
 // MARK: - Path
 /// Enum containing the sub-path for specifying an endpoint within the Ergast API.
 enum Path {
-    private var basePath: String { "/api/f1" }
-
+    private static let basePath = "/api/f1" 
+    
     /// Circuits (all, specific season)
     case circuits
     
@@ -59,6 +59,13 @@ extension Path {
     /// - Parameter season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020). All historical seasons will be fetched if nil.
     /// - Returns: String representing a URL path.
     func urlPath(for season: SeasonYear?) -> String {
-            return basePath + subPath(for: season)
+        return Path.basePath + subPath(for: season)
+    }
+    
+    var decodingType: Decodable.Type {
+        switch self {
+        case .circuits: return Circuits.self
+        default: return Circuits.self
+        }
     }
 }
