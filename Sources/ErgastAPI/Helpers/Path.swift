@@ -65,6 +65,7 @@ extension Path {
     var decodingType: Decodable.Type {
         switch self {
         case .circuits: return Circuits.self
+        case .constructors: return Constructors.self
         case .seasons: return Seasons.self
         default: return Circuits.self
         }
