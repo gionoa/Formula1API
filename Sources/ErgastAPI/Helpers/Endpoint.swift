@@ -8,7 +8,7 @@
 import Foundation
 
 /// Indicates URL components for the Ergast REST API.
-enum ErgastEndpoint {
+internal enum ErgastEndpoint {
     /// URL scheme.
     static let scheme = "https"
     
@@ -24,7 +24,7 @@ struct Endpoint {
     /// - Parameters:
     ///   - path: Specify a path, mapping to a specific endpoint of the Ergast REST API.
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).  All historical seasons will be fetched if nil. 
-    init(with path: Path, for season: Season? = nil) {
+    init(with path: Path, for season: SeasonYear? = nil) {
         urlPath = path.urlPath(for: season)
     }
 }

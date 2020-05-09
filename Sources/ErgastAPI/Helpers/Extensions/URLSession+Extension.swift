@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 
-// MARK: - Ergast API Service
+// MARK: - URLSession
 /// Ergast service for interacting with the Ergast endpoints within the ErgastAPI package.
-enum ErgastAPIService {
     // MARK: - Static Networking Functions
+
+extension URLSession { 
     /// Callback-based networking data task. Called by the internal fetch function.
     /// - Parameters:
     ///   - url: URL to reach.
     ///   - session: URLSession instance.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    private static func dataTask(_ url: URL,
+    private func dataTask(_ url: URL,
                                  _ session: URLSession,
                                  completion: @escaping ((Result<Data, ErgastAPIError>) -> Void))
     {
@@ -42,22 +43,21 @@ enum ErgastAPIService {
     ///   - session: URLSession instance (URLSession.shared singleton by default)
     ///   - decodingType: Decodable-conforming object to be used for serializing JSON response.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
-    internal static func fetch<T: Decodable>(_ subPath: Path,
-                                    for season: Season? = nil,
-                                    decodingType: T.Type,
+    internal func fetch<T: Decodable>(_ subPath: Path,
+                                    for season: SeasonYear? = nil,
                                     session: URLSession = URLSession.shared,
                                     completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
         
         let endpoint = Endpoint(with: subPath, for: season)
         let url = endpoint.url
         
-        ErgastAPIService.dataTask(url, session) { result in
+        session.dataTask(url, session) { result in
             switch result {
             case .success(let data):
                 do {
-                    let decode = try JSONDecoder().decode(T.self, from: data)
+                    let decode = try subPath.decodingType.decode(from: data)
                     
-                    completion(.success(decode))
+                    completion(.success(decode as! T))
                 } catch (let error) {
                     print(error)
                     completion(.failure(.network(error.localizedDescription)))
@@ -70,4 +70,3 @@ enum ErgastAPIService {
         }
     }
 }
-
