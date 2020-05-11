@@ -13,6 +13,9 @@ enum Path {
     /// Circuits (all, specific season)
     case circuits
     
+    /// Constructors(all, specific season)
+    case constructors
+    
     /// Constructor Standings (all, specific season)
     case constructorStandings
     
@@ -40,6 +43,8 @@ extension Path {
         switch self {
         case .circuits:
             return "\(season?.query ?? "")/circuits.json"
+        case .constructors:
+            return "\(season?.query ?? "")/constructors.json"
         case .constructorStandings:
             return "\(season?.query ?? "")/constructorStandings.json"
         case .drivers:
