@@ -55,9 +55,9 @@ extension Path {
         case .driverStandings:
             return "/driverStandings.json"
         case .raceSchedule:
-            guard let season = season else { fatalError("Season must be provided") }
+            guard let year = season?.query else { fatalError("Season must be provided") }
             
-            return "/\(season).json"
+            return "\(year).json"
         case .results:
             return "/results.json"
         case .raceStandings:
