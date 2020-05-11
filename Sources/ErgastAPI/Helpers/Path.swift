@@ -13,6 +13,9 @@ enum Path {
     /// Circuits (all, specific season)
     case circuits
     
+    /// Constructors(all, specific season)
+    case constructors
+    
     /// Constructor Standings (all, specific season)
     case constructorStandings
     
@@ -21,6 +24,9 @@ enum Path {
     
     /// Driver Standings.
     case driverStandings
+    
+    /// Race Schedule.
+    case raceSchedule
     
     /// Race Results.
     case results
@@ -40,12 +46,18 @@ extension Path {
         switch self {
         case .circuits:
             return "\(season?.query ?? "")/circuits.json"
+        case .constructors:
+            return "\(season?.query ?? "")/constructors.json"
         case .constructorStandings:
             return "\(season?.query ?? "")/constructorStandings.json"
         case .drivers:
             return "\(season?.query ?? "")/driverStandings.json"
         case .driverStandings:
             return "/driverStandings.json"
+        case .raceSchedule:
+            guard let year = season?.query else { fatalError("Season must be provided") }
+            
+            return "\(year).json"
         case .results:
             return "/results.json"
         case .raceStandings:
@@ -65,7 +77,9 @@ extension Path {
     var decodingType: Decodable.Type {
         switch self {
         case .circuits: return Circuits.self
+        case .constructors: return Constructors.self
         case .seasons: return Seasons.self
+        case .raceSchedule: return RaceSchedule.self
         default: return Circuits.self
         }
     }

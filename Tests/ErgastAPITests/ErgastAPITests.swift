@@ -18,18 +18,11 @@ final class ErgastAPITests: XCTestCase {
     }
 
     static var allTests = [(String, ErgastAPITests)]()
-    
-    func test_circuit_all_shouldSucceed() {
-//        ErgastAPI.circuits(for: nil) { result in
-//            switch result {
-//            case .success(let circuits):
-//                XCTAssert(circuits.count > 0)
-//                print(circuits)
-//                
-//            case .failure(let error):
-//                print(error)
-//                fatalError()
-//            }
-//        }
+        
+    func test_raceSchedule_forGivenYear_shouldSucceed() {
+        let sut = Path.raceSchedule.urlPath(for: .year(2018))
+        
+        print(sut)
+        XCTAssertEqual(sut, "/api/f1/2018.json")
     }
 }
