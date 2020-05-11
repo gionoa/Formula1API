@@ -14,7 +14,9 @@ public struct ErgastAPI {
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020). 
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func circuits(for season: SeasonYear, completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+    public static func circuits<T: Decodable>(for season: SeasonYear,
+                                              completion: @escaping (Result<T, ErgastAPIError>) -> Void) {
+        
         URLSession.shared.fetch(.circuits,
                                for: season) { result in
             completion(result)
@@ -23,15 +25,18 @@ public struct ErgastAPI {
     
     /// Fetches Formula 1 Circuits for all seasons throughout history.
     /// - Parameter completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func allCircuits(completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+    public static func allCircuits<T: Decodable>(completion: @escaping (Result<T, ErgastAPIError>) -> Void) {
+        
         URLSession.shared.fetch(.circuits,
                                for: nil) { result in
             completion(result)
         }
     }
     
-    // Fetches Formula 1 Seasons throughout history.
-    public static func seasons(completion: @escaping (Result<Seasons, ErgastAPIError>) -> Void) {
+    /// Fetches Formula 1 Seasons throughout history.
+    /// - Parameter completion: Asynchronous closure to inject functionality once the network interaction completes.
+    public static func seasons<T: Decodable>(completion: @escaping (Result<T, ErgastAPIError>) -> Void) {
+        
         URLSession.shared.fetch(.seasons) { result in
             completion(result)
         }
