@@ -63,5 +63,14 @@ public enum ErgastAPI {
             completion(result)
         }
     }
+    
+    public static func raceSchedule<T: Decodable>(for season: SeasonYear,
+                                                     completion: @escaping (Result<T, ErgastAPIError>) -> Void) {
+
+        URLSession.shared.fetch(.raceSchedule,
+                                for: season) { result in
+            completion(result)
+        }
+    }
 }
 
