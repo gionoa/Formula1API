@@ -8,7 +8,7 @@
 import Foundation
 
 /// Public interface of functions for fetching Formula 1 data from the Ergast REST API.
-public struct ErgastAPI {
+public enum ErgastAPI {
     
     /// Fetches Formula 1 Circuits for a given year.
     /// - Parameters:
@@ -59,6 +59,15 @@ public struct ErgastAPI {
                                                   completion: @escaping (Result<T, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.constructors,
+                                for: season) { result in
+            completion(result)
+        }
+    }
+    
+    public static func raceSchedule<T: Decodable>(for season: SeasonYear,
+                                                     completion: @escaping (Result<T, ErgastAPIError>) -> Void) {
+
+        URLSession.shared.fetch(.raceSchedule,
                                 for: season) { result in
             completion(result)
         }

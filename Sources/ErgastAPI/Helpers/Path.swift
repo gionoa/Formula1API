@@ -25,6 +25,9 @@ enum Path {
     /// Driver Standings.
     case driverStandings
     
+    /// Race Schedule.
+    case raceSchedule
+    
     /// Race Results.
     case results
     
@@ -51,6 +54,10 @@ extension Path {
             return "\(season?.query ?? "")/driverStandings.json"
         case .driverStandings:
             return "/driverStandings.json"
+        case .raceSchedule:
+            guard let season = season else { fatalError("Season must be provided") }
+            
+            return "\(season).json"
         case .results:
             return "/results.json"
         case .raceStandings:
@@ -72,6 +79,7 @@ extension Path {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
         case .seasons: return Seasons.self
+        case .raceSchedule: return RaceSchedule.self
         default: return Circuits.self
         }
     }
