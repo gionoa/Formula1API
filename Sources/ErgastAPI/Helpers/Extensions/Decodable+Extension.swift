@@ -8,7 +8,8 @@
 import Foundation
 
 extension Decodable {
-    static func decode(from: Data, using decoder: JSONDecoder = JSONDecoder()) throws -> Self {
+    static func decode(from: Data,
+                       using decoder: JSONDecoder = JSONDecoder()) throws -> Self {
         return try decoder.decode(self, from: from)
     }
 }

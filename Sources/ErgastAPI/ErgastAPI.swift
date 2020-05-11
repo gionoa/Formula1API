@@ -8,7 +8,7 @@
 import Foundation
 
 /// Public interface of functions for fetching Formula 1 data from the Ergast REST API.
-public struct ErgastAPI {
+public enum ErgastAPI {
     
     /// Fetches Formula 1 Circuits for a given year.
     /// - Parameters:
