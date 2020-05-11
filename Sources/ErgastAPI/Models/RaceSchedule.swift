@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RaceSchedule: Codable {
+public struct RaceSchedule: Codable {
     let data: RaceScheduleData
 
     enum CodingKeys: String, CodingKey {
