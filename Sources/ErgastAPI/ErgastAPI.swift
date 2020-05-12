@@ -77,6 +77,10 @@ public enum ErgastAPI {
         }
     }
     
+    /// Fetches Formula 1 Race Results for a given year.
+    /// - Parameters:
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
+    ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func raceResults(for season: SeasonYear,
                                    completion: @escaping(Result<RaceResults, ErgastAPIError>) -> Void) {
         
