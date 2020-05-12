@@ -76,5 +76,13 @@ public enum ErgastAPI {
             completion(result)
         }
     }
+    
+    public static func raceResults(for season: SeasonYear,
+                                   completion: @escaping(Result<RaceResults, ErgastAPIError>) -> Void) {
+        
+        URLSession.shared.fetch(.raceResults, for: season) { result in
+            completion(result)
+        }
+    }
 }
 
