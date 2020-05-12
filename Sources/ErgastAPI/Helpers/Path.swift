@@ -59,7 +59,7 @@ extension Path {
             
             return "\(year).json"
         case .raceResults:
-            return "/results.json"
+            return "/\(season?.query ?? "")/results.json"
         case .raceStandings:
             return "\(season?.query ?? "")/results.json"
         case .seasons:
