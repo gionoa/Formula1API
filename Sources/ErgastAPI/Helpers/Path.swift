@@ -29,7 +29,7 @@ enum Path {
     case raceSchedule
     
     /// Race Results.
-    case results
+    case raceResults
     
     /// Race Standings (all, specific season).
     case raceStandings
@@ -58,7 +58,7 @@ extension Path {
             guard let year = season?.query else { fatalError("Season must be provided") }
             
             return "\(year).json"
-        case .results:
+        case .raceResults:
             return "/results.json"
         case .raceStandings:
             return "\(season?.query ?? "")/results.json"
@@ -74,11 +74,13 @@ extension Path {
         return Path.basePath + subPath(for: season)
     }
     
+    /// Returns a Decodable type for a given endpoint.
     var decodingType: Decodable.Type {
         switch self {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
         case .seasons: return Seasons.self
+        case .raceResults: return RaceResults.self
         case .raceSchedule: return RaceSchedule.self
         default: return Circuits.self
         }
