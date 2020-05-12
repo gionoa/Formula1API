@@ -25,4 +25,11 @@ final class ErgastAPITests: XCTestCase {
         print(sut)
         XCTAssertEqual(sut, "/api/f1/2018.json")
     }
+    
+    func test_raceResults_forGivenYear_shouldSucceed() {
+        let sut = Path.raceResults.urlPath(for: .year(2018))
+        
+        print(sut)
+        XCTAssertEqual(sut, "/api/f1/2018/results.json")
+    }
 }
