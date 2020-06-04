@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the Constructors endpoint.
 public struct Constructors: Codable {
     let data: ConstructorsData
 

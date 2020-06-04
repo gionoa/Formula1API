@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the RaceResults endpoint.
 public struct RaceResults: Codable {
     let data: RaceResultsData
 

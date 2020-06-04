@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the QualifyingResults endpoint.
 public struct QualifyingResults: Codable {
     let data: QualifyingResultsData
 
@@ -33,7 +34,6 @@ struct QualifyingResultsData: Codable {
     }
 }
 
-// MARK: - QualifyingResult
 struct QualifyingResult: Codable {
     let number: String
     let position: String
