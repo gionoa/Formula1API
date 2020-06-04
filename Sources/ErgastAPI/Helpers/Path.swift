@@ -36,6 +36,9 @@ enum Path {
     
     /// Seasons throughout history.
     case seasons
+    
+    /// Qualifying Results for a given year.
+    case qualifyingResults
 }
 
 extension Path {
