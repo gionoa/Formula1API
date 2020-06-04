@@ -87,7 +87,8 @@ extension Path {
         case .seasons: return Seasons.self
         case .raceResults: return RaceResults.self
         case .raceSchedule: return RaceSchedule.self
-        default: return Circuits.self
+        case .qualifyingResults: return QualifyingResults.self
+        default: fatalError("Must provide Decodable type for enum case")
         }
     }
 }
