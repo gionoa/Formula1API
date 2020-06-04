@@ -67,6 +67,8 @@ extension Path {
             return "\(season?.query ?? "")/results.json"
         case .seasons:
             return "/seasons.json"
+        case .qualifyingResults:
+            return "\(year)/qualifying.json"
         }
     }
     
