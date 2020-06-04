@@ -36,6 +36,9 @@ enum Path {
     
     /// Seasons throughout history.
     case seasons
+    
+    /// Qualifying Results for a given year.
+    case qualifyingResults
 }
 
 extension Path {
@@ -43,27 +46,29 @@ extension Path {
     /// - Parameter season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).  Data for historical seasons will be fetched if nil.
     /// - Returns: String to be added to the Endpoint path.
     private func subPath(for season: SeasonYear? = nil) -> String {
+        let year = season?.query ?? ""
+        
         switch self {
         case .circuits:
-            return "\(season?.query ?? "")/circuits.json"
+            return "\(year)/circuits.json"
         case .constructors:
-            return "\(season?.query ?? "")/constructors.json"
+            return "\(year)/constructors.json"
         case .constructorStandings:
-            return "\(season?.query ?? "")/constructorStandings.json"
+            return "\(year)/constructorStandings.json"
         case .drivers:
-            return "\(season?.query ?? "")/driverStandings.json"
+            return "\(year)/driverStandings.json"
         case .driverStandings:
             return "/driverStandings.json"
         case .raceSchedule:
-            guard let year = season?.query else { fatalError("Season must be provided") }
-            
             return "\(year).json"
         case .raceResults:
-            return "\(season?.query ?? "")/results.json"
+            return "\(year)/results.json"
         case .raceStandings:
-            return "\(season?.query ?? "")/results.json"
+            return "\(year)/results.json"
         case .seasons:
             return "/seasons.json"
+        case .qualifyingResults:
+            return "\(year)/qualifying.json"
         }
     }
     

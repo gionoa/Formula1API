@@ -88,5 +88,12 @@ public enum ErgastAPI {
             completion(result)
         }
     }
+    
+    public static func qualifying(for season: SeasonYear,
+                                  completion: @escaping (Result<QualifyingResults, ErgastAPIError>) -> Void) {
+        URLSession.shared.fetch(.qualifyingResults, for: season) { result in
+            completion(result)
+        }
+    }
 }
 
