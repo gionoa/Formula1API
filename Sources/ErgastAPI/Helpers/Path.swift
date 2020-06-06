@@ -56,9 +56,9 @@ extension Path {
         case .constructorStandings:
             return "\(year)/constructorStandings.json"
         case .drivers:
-            return "\(year)/driverStandings.json"
+            return "\(year)/drivers.json"
         case .driverStandings:
-            return "/driverStandings.json"
+            return "\(year)/driverStandings.json"
         case .raceSchedule:
             return "\(year).json"
         case .raceResults:
