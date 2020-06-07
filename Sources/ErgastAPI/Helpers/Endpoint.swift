@@ -20,12 +20,25 @@ internal enum ErgastEndpoint {
 struct Endpoint {
     private let urlPath: String
     
+    private var limit: String?
+    private var offset: String?
+    
     /// Initializer for an Endpoint object.
     /// - Parameters:
     ///   - path: Specify a path, mapping to a specific endpoint of the Ergast REST API.
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).  All historical seasons will be fetched if nil. 
-    init(with path: Path, for season: SeasonYear? = nil) {
+    init(with path: Path,
+         for season: SeasonYear?,
+         limit: String?,
+         offset: String?) {
+        
         urlPath = path.urlPath(for: season)
+        
+        if let limit = limit,
+           let offset = offset {
+            self.limit = limit
+            self.offset = offset
+        }
     }
 }
 
@@ -37,7 +50,8 @@ extension Endpoint {
         components.scheme = ErgastEndpoint.scheme
         components.host = ErgastEndpoint.host
         components.path = urlPath
-        
+        components.queryItems = [URLQueryItem(name: "limit", value: self.limit),
+                                 URLQueryItem(name: "offset", value: self.offset)]
         guard let validURL = components.url else { fatalError("Could not construct URL.") }
         
         return validURL
