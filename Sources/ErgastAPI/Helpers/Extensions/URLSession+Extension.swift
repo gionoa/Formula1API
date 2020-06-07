@@ -44,8 +44,8 @@ extension URLSession {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
     internal func fetch<T: Decodable>(_ subPath: Path,
                                     for season: SeasonYear? = nil,
-                                    limit: String,
-                                    offset: String,
+                                    limit: String?,
+                                    offset: String?,
                                     session: URLSession = URLSession.shared,
                                     completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
         

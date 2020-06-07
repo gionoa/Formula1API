@@ -8,8 +8,9 @@
 import Foundation
 
 private enum ErgastQueryItems {
-    case limit(String)
-    case offset(String)
+    case limit(String?)
+    
+    case offset(String?)
 }
 
 /// Indicates URL components for the Ergast REST API.
@@ -57,6 +58,7 @@ extension Endpoint {
         components.path = urlPath
         components.queryItems = [URLQueryItem(name: "limit", value: self.limit),
                                  URLQueryItem(name: "offset", value: self.offset)]
+        
         guard let validURL = components.url else { fatalError("Could not construct URL.") }
         
         return validURL
