@@ -41,7 +41,7 @@ struct Endpoint {
         urlPath = path.urlPath(for: season)
         
         if let limit = limit,
-           let offset = offset {
+            let offset = offset {
             self.limit = limit
             self.offset = offset
         }
@@ -56,8 +56,12 @@ extension Endpoint {
         components.scheme = ErgastEndpoint.scheme
         components.host = ErgastEndpoint.host
         components.path = urlPath
-        components.queryItems = [URLQueryItem(name: "limit", value: self.limit),
-                                 URLQueryItem(name: "offset", value: self.offset)]
+        
+        if limit != nil,
+           offset != nil {
+            components.queryItems = [URLQueryItem(name: "limit", value: self.limit),
+                                      URLQueryItem(name: "offset", value: self.offset)]
+        }
         
         guard let validURL = components.url else { fatalError("Could not construct URL.") }
         
