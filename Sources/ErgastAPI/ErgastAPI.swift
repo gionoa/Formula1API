@@ -21,7 +21,9 @@ public enum ErgastAPI {
                                 completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.circuits,
-                               for: season, limit: limit, offset: offset) { result in
+                               for: season,
+                               limit: limit,
+                               offset: offset) { result in
             completion(result)
         }
     }
