@@ -15,8 +15,8 @@ public enum ErgastAPI {
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020). 
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func circuits(for season: SeasonYear,
-                                limit: String?,
-                                offset: String?,
+                                limit: String? = nil,
+                                offset: String? = nil,
                                 completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.circuits,
@@ -27,8 +27,8 @@ public enum ErgastAPI {
     
     /// Fetches Formula 1 Circuits for all seasons throughout history.
     /// - Parameter completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func allCircuits(limit: String?,
-                                   offset: String?,
+    public static func allCircuits(limit: String? = nil,
+                                   offset: String? = nil,
                                    completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.circuits,
@@ -40,8 +40,8 @@ public enum ErgastAPI {
     
     /// Fetches Formula 1 Seasons throughout history.
     /// - Parameter completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func seasons(limit: String?,
-                               offset: String?,
+    public static func seasons(limit: String? = nil,
+                               offset: String? = nil,
                                completion: @escaping (Result<Seasons, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.seasons,
@@ -53,8 +53,8 @@ public enum ErgastAPI {
     
     /// Fetches Formula 1 Constructors for all seasons throughout history.
     /// - Parameter completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func allConstructors(limit: String?,
-                                       offset: String?,
+    public static func allConstructors(limit: String? = nil,
+                                       offset: String? = nil,
                                        completion: @escaping (Result<Constructors, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.constructors,
@@ -69,8 +69,8 @@ public enum ErgastAPI {
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func constructors(for season: SeasonYear,
-                                    limit: String?,
-                                    offset: String?,
+                                    limit: String? = nil,
+                                    offset: String? = nil,
                                     completion: @escaping (Result<Constructors, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.constructors,
@@ -86,8 +86,8 @@ public enum ErgastAPI {
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func raceSchedule(for season: SeasonYear,
-                                    limit: String?,
-                                    offset: String?,
+                                    limit: String? = nil,
+                                    offset: String? = nil,
                                     completion: @escaping (Result<RaceSchedule, ErgastAPIError>) -> Void) {
 
         URLSession.shared.fetch(.raceSchedule,
@@ -103,8 +103,8 @@ public enum ErgastAPI {
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func raceResults(for season: SeasonYear,
-                                   limit: String?,
-                                   offset: String?,
+                                   limit: String? = nil,
+                                   offset: String? = nil,
                                    completion: @escaping(Result<RaceResults, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.raceResults,
@@ -116,8 +116,8 @@ public enum ErgastAPI {
     }
     
     public static func qualifying(for season: SeasonYear,
-                                  limit: String?,
-                                  offset: String?,
+                                  limit: String? = nil,
+                                  offset: String? = nil,
                                   completion: @escaping (Result<QualifyingResults, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.qualifyingResults,
