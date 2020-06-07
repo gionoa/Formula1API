@@ -7,6 +7,11 @@
 
 import Foundation
 
+private enum ErgastQueryItems {
+    case limit(String)
+    case offset(String)
+}
+
 /// Indicates URL components for the Ergast REST API.
 internal enum ErgastEndpoint {
     /// URL scheme.
