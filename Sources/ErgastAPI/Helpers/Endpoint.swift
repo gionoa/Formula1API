@@ -7,8 +7,18 @@
 
 import Foundation
 
+
+/// Internal struct for query items used in Ergast URLs.
+private enum ErgastQueryItems {
+    /// Limit indicator, to specify to the API how many items to return at a time per request.
+    case limit(String?)
+    
+    /// Offset indicator, to specify to the API the starting point of elements.
+    case offset(String?)
+}
+
 /// Indicates URL components for the Ergast REST API.
-internal enum ErgastEndpoint {
+private enum ErgastEndpoint {
     /// URL scheme.
     static let scheme = "https"
     
@@ -17,15 +27,34 @@ internal enum ErgastEndpoint {
 }
 
 /// Generates a URL for a given Path enum case.
-struct Endpoint {
+internal struct Endpoint {
+    /// URL for Ergast API.
     private let urlPath: String
+    
+    /// Indicates number of items to return per request.
+    private var limit: String?
+    
+    /// Indicates the starting point of elements from API request.
+    private var offset: String?
     
     /// Initializer for an Endpoint object.
     /// - Parameters:
     ///   - path: Specify a path, mapping to a specific endpoint of the Ergast REST API.
-    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).  All historical seasons will be fetched if nil. 
-    init(with path: Path, for season: SeasonYear? = nil) {
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).  All historical seasons will be fetched if nil.
+    ///   - limit: Optional property to specify number of items to return per request.
+    ///   - offset: Optional property to indicate starting point of elements from API request.
+    init(with path: Path,
+         for season: SeasonYear?,
+         limit: String?,
+         offset: String?) {
+        
         urlPath = path.urlPath(for: season)
+        
+        if let limit = limit,
+            let offset = offset {
+            self.limit = limit
+            self.offset = offset
+        }
     }
 }
 
@@ -37,6 +66,12 @@ extension Endpoint {
         components.scheme = ErgastEndpoint.scheme
         components.host = ErgastEndpoint.host
         components.path = urlPath
+        
+        if limit != nil,
+           offset != nil {
+            components.queryItems = [URLQueryItem(name: "limit", value: self.limit),
+                                     URLQueryItem(name: "offset", value: self.offset)]
+        }
         
         guard let validURL = components.url else { fatalError("Could not construct URL.") }
         

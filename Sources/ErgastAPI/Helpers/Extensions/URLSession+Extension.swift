@@ -19,9 +19,8 @@ extension URLSession {
     ///   - session: URLSession instance.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     private func dataTask(_ url: URL,
-                                 _ session: URLSession,
-                                 completion: @escaping ((Result<Data, ErgastAPIError>) -> Void))
-    {
+                          _ session: URLSession,
+                          completion: @escaping ((Result<Data, ErgastAPIError>) -> Void)) {
         session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 if let error = error {
@@ -45,10 +44,15 @@ extension URLSession {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
     internal func fetch<T: Decodable>(_ subPath: Path,
                                     for season: SeasonYear? = nil,
+                                    limit: String? = nil,
+                                    offset: String? = nil,
                                     session: URLSession = URLSession.shared,
                                     completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
         
-        let endpoint = Endpoint(with: subPath, for: season)
+        let endpoint = Endpoint(with: subPath,
+                                for: season,
+                                limit: limit,
+                                offset: offset)
         let url = endpoint.url
         
         session.dataTask(url, session) { result in
