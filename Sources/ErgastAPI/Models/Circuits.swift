@@ -1,5 +1,5 @@
 //
-//  AllCircuits.swift
+//  Circuits.swift
 //
 //
 //  Created by Giovanni Noa on 5/5/20.

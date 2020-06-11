@@ -7,23 +7,29 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the Constructors endpoint.
 public struct Constructors: Codable {
-    let mrData: ConstructorsData
+    let data: ConstructorsData
 
     enum CodingKeys: String, CodingKey {
-        case mrData = "MRData"
+        case data = "MRData"
     }
 }
 
 struct ConstructorsData: Codable {
-    let xmlns: String
     let series: String
     let url: String
-    let limit, offset, total: String
+    let limit: String
+    let offset: String
+    let total: String
     let constructorTable: ConstructorTable
 
     enum CodingKeys: String, CodingKey {
-        case xmlns, series, url, limit, offset, total
+        case series
+        case url
+        case limit
+        case offset
+        case total
         case constructorTable = "ConstructorTable"
     }
 }
@@ -41,10 +47,13 @@ struct ConstructorTable: Codable {
 struct Constructor: Codable {
     let constructorID: String
     let url: String
-    let name, nationality: String
+    let name: String
+    let nationality: String
 
     enum CodingKeys: String, CodingKey {
         case constructorID = "constructorId"
-        case url, name, nationality
+        case url
+        case name
+        case nationality
     }
 }

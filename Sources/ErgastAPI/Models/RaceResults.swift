@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the RaceResults endpoint.
 public struct RaceResults: Codable {
     let data: RaceResultsData
 
@@ -45,7 +46,10 @@ struct RaceResult: Codable {
     let fastestLap: FastestLap
 
     enum CodingKeys: String, CodingKey {
-        case number, position, positionText, points
+        case number
+        case position
+        case positionText
+        case points
         case driver = "Driver"
         case constructor = "Constructor"
         case grid, laps, status
@@ -55,23 +59,36 @@ struct RaceResult: Codable {
 }
 
 struct Driver: Codable {
-    let driverID, permanentNumber, code: String
+    let driverID: String
+    let permanentNumber: String
+    let code: String
     let url: String
-    let givenName, familyName, dateOfBirth, nationality: String
+    let givenName: String
+    let familyName: String
+    let dateOfBirth: String
+    let nationality: String
 
     enum CodingKeys: String, CodingKey {
         case driverID = "driverId"
-        case permanentNumber, code, url, givenName, familyName, dateOfBirth, nationality
+        case permanentNumber
+        case code
+        case url
+        case givenName
+        case familyName
+        case dateOfBirth
+        case nationality
     }
 }
 
 struct FastestLap: Codable {
-    let rank, lap: String
+    let rank: String
+    let lap: String
     let time: FastestLapTime
     let averageSpeed: AverageSpeed
 
     enum CodingKeys: String, CodingKey {
-        case rank, lap
+        case rank
+        case lap
         case time = "Time"
         case averageSpeed = "AverageSpeed"
     }
@@ -91,5 +108,6 @@ struct FastestLapTime: Codable {
 }
 
 struct ResultTime: Codable {
-    let millis, time: String
+    let millis: String
+    let time: String
 }
