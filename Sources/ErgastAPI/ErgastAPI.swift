@@ -152,6 +152,14 @@ public enum ErgastAPI {
         }
     }
     
+    
+    /// Fetches Pit Stops for a given year and round.
+    /// - Parameters:
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
+    ///   - round: A race within the season.
+    ///   - limit: Property to specify number of items to return per request.
+    ///   - offset: Property to indicate starting point of elements from API request.
+    ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func pitStops(for season: SeasonYear,
                                 andRound round: String,
                                 limit: String? = nil,

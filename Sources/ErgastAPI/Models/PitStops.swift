@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the PitStops endpoint.
 public struct PitStops: Codable {
     let data: PitStopsData
 
@@ -34,11 +35,17 @@ struct PitStopsData: Codable {
 }
 
 struct PitStop: Codable {
-    let driverID, lap, stop, time: String
+    let driverID: String
+    let lap: String
+    let stop: String
+    let time: String
     let duration: String
 
     enum CodingKeys: String, CodingKey {
         case driverID = "driverId"
-        case lap, stop, time, duration
+        case lap
+        case stop
+        case time
+        case duration
     }
 }
