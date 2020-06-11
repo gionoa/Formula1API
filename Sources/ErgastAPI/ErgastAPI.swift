@@ -151,5 +151,20 @@ public enum ErgastAPI {
             completion(result)
         }
     }
+    
+    public static func pitStops(for season: SeasonYear,
+                                andRound round: String,
+                                limit: String? = nil,
+                                offset: String? = nil,
+                                completion: @escaping (Result<PitStops, ErgastAPIError>) -> Void) {
+        
+        URLSession.shared.fetch(.pitStops,
+                                for: season,
+                                andRound: round,
+                                limit: limit,
+                                offset: offset) { result in
+        completion(result)
+    }
 }
 
+}
