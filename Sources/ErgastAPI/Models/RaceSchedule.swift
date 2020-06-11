@@ -66,6 +66,6 @@ struct Race: Codable {
         case date
         case time
         case qualifyingResults = "QualifyingResults"
-        case pitStops
+        case pitStops = "PitStops"
     }
 }
