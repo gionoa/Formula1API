@@ -21,8 +21,10 @@ let package = Package(
         .target(
             name: "ErgastAPI",
             dependencies: []),
-        .testTarget(
-            name: "ErgastAPITests",
-            dependencies: ["ErgastAPI"]),
+//        #if !os(watchOS)
+//        .testTarget(
+//            name: "ErgastAPITests",
+//            dependencies: ["ErgastAPI"]),
+//        #endif
     ]
 )
