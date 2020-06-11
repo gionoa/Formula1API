@@ -1,5 +1,5 @@
 //
-//  ErgastAPIService.swift
+//  URLSession+Extension.swift
 //
 //
 //  Created by Giovanni Noa on 4/28/20.
@@ -9,10 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - URLSession
-/// Ergast service for interacting with the Ergast endpoints within the ErgastAPI package.
-    // MARK: - Static Networking Functions
-
-extension URLSession { 
+extension URLSession {
     /// Callback-based networking data task. Called by the internal fetch function.
     /// - Parameters:
     ///   - url: URL to reach.
@@ -43,14 +40,16 @@ extension URLSession {
     ///   - decodingType: Decodable-conforming object to be used for serializing JSON response.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
     internal func fetch<T: Decodable>(_ subPath: Path,
-                                    for season: SeasonYear? = nil,
-                                    limit: String? = nil,
-                                    offset: String? = nil,
-                                    session: URLSession = URLSession.shared,
-                                    completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
+                                      for season: SeasonYear? = nil,
+                                      andRound round: String? = nil,
+                                      limit: String? = nil,
+                                      offset: String? = nil,
+                                      session: URLSession = URLSession.shared,
+                                      completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
         
         let endpoint = Endpoint(with: subPath,
                                 for: season,
+                                andRound: round,
                                 limit: limit,
                                 offset: offset)
         let url = endpoint.url
