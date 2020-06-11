@@ -45,10 +45,11 @@ internal struct Endpoint {
     ///   - offset: Optional property to indicate starting point of elements from API request.
     init(with path: Path,
          for season: SeasonYear?,
+         andRound round: String?,
          limit: String?,
          offset: String?) {
         
-        urlPath = path.urlPath(for: season)
+        urlPath = path.urlPath(for: season, round: round)
         
         if let limit = limit,
             let offset = offset {

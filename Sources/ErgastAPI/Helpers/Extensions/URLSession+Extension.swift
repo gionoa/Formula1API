@@ -44,6 +44,7 @@ extension URLSession {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
     internal func fetch<T: Decodable>(_ subPath: Path,
                                     for season: SeasonYear? = nil,
+                                    andRound round: String? = nil,
                                     limit: String? = nil,
                                     offset: String? = nil,
                                     session: URLSession = URLSession.shared,
@@ -51,6 +52,7 @@ extension URLSession {
         
         let endpoint = Endpoint(with: subPath,
                                 for: season,
+                                andRound: round,
                                 limit: limit,
                                 offset: offset)
         let url = endpoint.url
