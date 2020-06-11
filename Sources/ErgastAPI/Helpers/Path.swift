@@ -93,6 +93,7 @@ extension Path {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
         case .seasons: return Seasons.self
+        case .pitStops: return PitStops.self
         case .raceResults: return RaceResults.self
         case .raceSchedule: return RaceSchedule.self
         case .qualifyingResults: return QualifyingResults.self
