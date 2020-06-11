@@ -171,8 +171,7 @@ public enum ErgastAPI {
                                 andRound: round,
                                 limit: limit,
                                 offset: offset) { result in
-        completion(result)
+            completion(result)
+        }
     }
-}
-
 }

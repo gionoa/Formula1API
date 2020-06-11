@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  QualifyingResults.swift
 //  
 //
 //  Created by Giovanni Noa on 6/3/20.
