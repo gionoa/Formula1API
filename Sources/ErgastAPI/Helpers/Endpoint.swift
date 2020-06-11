@@ -76,4 +76,3 @@ extension Endpoint {
         return validURL
     }
 }
-
