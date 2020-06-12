@@ -29,9 +29,9 @@ Currently, you can fetch:
 * `Constructors (all, specified season)`
 * `Race Schedule (specified season)`
 * `Race Results (specified season)`
-* `Qualifying Results (specified season),
-* `Pit Stops (specified season), 
-* `Laps(specified season)
+* `Qualifying Results (specified season)`,
+* `Pit Stops (specified season)`, 
+* `Laps(specified season)`
 
 *More endpoints will be accessible as development progresses.* 
 
