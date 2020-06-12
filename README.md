@@ -45,7 +45,7 @@ Example:
 ```
 ErgastAPI.allConstructors(for: .year(2020)) { result in
     switch result {
-        case .success(let schedule):
+        case .success(let constructors):
             print(schedule)
         case .failure(let error):
             print(error)
@@ -54,7 +54,7 @@ ErgastAPI.allConstructors(for: .year(2020)) { result in
 
 ErgastAPI.constructors { result in
     switch result {
-        case .success(let schedule):
+        case .success(let constructors):
             print(schedule)
         case .failure(let error):
             print(error)
