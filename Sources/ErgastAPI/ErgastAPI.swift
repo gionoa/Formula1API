@@ -176,7 +176,7 @@ public enum ErgastAPI {
     
     public static func laps(for season: Season,
                             round: String,
-                            lap: String?,
+                            lap: String? = nil,
                             limit: String? = nil,
                             offset: String? = nil,
                             completion: @escaping (Result<Laps, ErgastAPIError>) -> Void) {
