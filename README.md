@@ -1,5 +1,5 @@
 
-# Ergast API
+# Formula 1 API
 
 > This Swift library provides endpoint access to Formula 1 data provided by the [Ergast API](https://ergast.com/mrd/). By using this library, you won't have to build the interactive layer yourself, and can just start consuming the data. 
 
