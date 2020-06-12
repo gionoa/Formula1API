@@ -104,6 +104,7 @@ extension Path {
         switch self {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
+        case .lapTimes(_): return Laps.self
         case .seasons: return Seasons.self
         case .pitStops: return PitStops.self
         case .raceResults: return RaceResults.self
