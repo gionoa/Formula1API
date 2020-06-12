@@ -15,7 +15,7 @@ public enum ErgastAPI {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func circuits(for season: SeasonYear,
+    public static func circuits(for season: Season,
                                 limit: String? = nil,
                                 offset: String? = nil,
                                 completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
@@ -82,7 +82,7 @@ public enum ErgastAPI {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func constructors(for season: SeasonYear,
+    public static func constructors(for season: Season,
                                     limit: String? = nil,
                                     offset: String? = nil,
                                     completion: @escaping (Result<Constructors, ErgastAPIError>) -> Void) {
@@ -101,7 +101,7 @@ public enum ErgastAPI {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func raceSchedule(for season: SeasonYear,
+    public static func raceSchedule(for season: Season,
                                     limit: String? = nil,
                                     offset: String? = nil,
                                     completion: @escaping (Result<RaceSchedule, ErgastAPIError>) -> Void) {
@@ -120,7 +120,7 @@ public enum ErgastAPI {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func raceResults(for season: SeasonYear,
+    public static func raceResults(for season: Season,
                                    limit: String? = nil,
                                    offset: String? = nil,
                                    completion: @escaping(Result<RaceResults, ErgastAPIError>) -> Void) {
@@ -139,7 +139,7 @@ public enum ErgastAPI {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func qualifyingResults(for season: SeasonYear,
+    public static func qualifyingResults(for season: Season,
                                          limit: String? = nil,
                                          offset: String? = nil,
                                          completion: @escaping (Result<QualifyingResults, ErgastAPIError>) -> Void) {
@@ -159,15 +159,15 @@ public enum ErgastAPI {
     ///   - limit: Property to specify number of items to return per request.
     ///   - offset: Property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
-    public static func pitStops(for season: SeasonYear,
-                                andRound round: String,
+    public static func pitStops(for season: Season,
+                                round: String,
                                 limit: String? = nil,
                                 offset: String? = nil,
                                 completion: @escaping (Result<PitStops, ErgastAPIError>) -> Void) {
         
         URLSession.shared.fetch(.pitStops,
                                 for: season,
-                                andRound: round,
+                                round: round,
                                 limit: limit,
                                 offset: offset) { result in
             completion(result)
