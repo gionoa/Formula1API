@@ -33,14 +33,14 @@ struct SeasonData: Codable {
 }
 
 struct SeasonTable: Codable {
-    let seasons: [Season]
+    let seasons: [F1Season]
 
     enum CodingKeys: String, CodingKey {
         case seasons = "Seasons"
     }
 }
 
-struct Season: Codable {
+struct F1Season: Codable {
     let season: String
     let url: String
 }

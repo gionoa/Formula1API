@@ -44,17 +44,16 @@ internal struct Endpoint {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     init(with path: Path,
-         for season: SeasonYear?,
+         for season: Season?,
+         round: String?,
+         lap: String?,
          limit: String?,
          offset: String?) {
         
-        urlPath = path.urlPath(for: season)
+        urlPath = path.urlPath(for: season, round: round, lap: lap)
         
-        if let limit = limit,
-            let offset = offset {
-            self.limit = limit
-            self.offset = offset
-        }
+        self.limit = limit
+        self.offset = offset
     }
 }
 
@@ -67,10 +66,10 @@ extension Endpoint {
         components.host = ErgastEndpoint.host
         components.path = urlPath
         
-        if limit != nil,
-           offset != nil {
-            components.queryItems = [URLQueryItem(name: "limit", value: self.limit),
-                                     URLQueryItem(name: "offset", value: self.offset)]
+        if let limit = limit,
+           let offset = offset {
+            components.queryItems = [URLQueryItem(name: "limit", value: limit),
+                                     URLQueryItem(name: "offset", value: offset)]
         }
         
         guard let validURL = components.url else { fatalError("Could not construct URL.") }
@@ -78,4 +77,3 @@ extension Endpoint {
         return validURL
     }
 }
-
