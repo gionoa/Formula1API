@@ -44,12 +44,13 @@ internal struct Endpoint {
     ///   - limit: Optional property to specify number of items to return per request.
     ///   - offset: Optional property to indicate starting point of elements from API request.
     init(with path: Path,
-         for season: SeasonYear?,
-         andRound round: String?,
+         for season: Season?,
+         round: String?,
+         lap: String?,
          limit: String?,
          offset: String?) {
         
-        urlPath = path.urlPath(for: season, round: round)
+        urlPath = path.urlPath(for: season, round: round, lap: lap)
         
         self.limit = limit
         self.offset = offset

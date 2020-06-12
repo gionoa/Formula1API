@@ -25,6 +25,9 @@ enum Path {
     /// Driver Standings.
     case driverStandings
     
+    /// Lap Times.
+    case lapTimes(String?)
+    
     /// Pit Stops.
     case pitStops
     
@@ -48,7 +51,9 @@ extension Path {
     /// Function that generates the path for an endpoint within the Ergast API.
     /// - Parameter season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).  Data for historical seasons will be fetched if nil.
     /// - Returns: String to be added to the Endpoint path.
-    private func subPath(for season: SeasonYear? = nil, andRound round: String? = nil) -> String {
+    private func subPath(for season: Season? = nil,
+                         round: String? = nil) -> String {
+        
         let year = season?.query ?? ""
         let race = round ?? ""
         
@@ -63,6 +68,12 @@ extension Path {
             return "\(year)/drivers.json"
         case .driverStandings:
             return "\(year)/driverStandings.json"
+        case .lapTimes(let lap):
+            if let lap = lap {
+                 return "\(year)/\(race)/laps/\(lap).json"
+            }
+            
+            return "\(year)/\(race)/laps.json"
         case .pitStops:
             return "\(year)/\(race)/pitstops.json"
         case .raceSchedule:
@@ -81,10 +92,11 @@ extension Path {
     /// Constructs a path.
     /// - Parameter season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020). All historical seasons will be fetched if nil.
     /// - Returns: String representing a URL path.
-    func urlPath(for season: SeasonYear?,
-                 round: String?) -> String {
+    func urlPath(for season: Season?,
+                 round: String?,
+                 lap: String?) -> String {
         return Path.basePath + subPath(for: season,
-                                       andRound: round)
+                                       round: round)
     }
     
     /// Returns a Decodable type for a given endpoint.
@@ -92,6 +104,7 @@ extension Path {
         switch self {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
+        case .lapTimes(_): return Laps.self
         case .seasons: return Seasons.self
         case .pitStops: return PitStops.self
         case .raceResults: return RaceResults.self
