@@ -5,9 +5,9 @@
 
 ## Installing / Getting started
 
-> ErgastAPI supports Swift Package Manager. To use SwiftPM, you should use Xcode 11 to open your project. 
+> Formula 1 API supports Swift Package Manager. To use SwiftPM, you should use Xcode 11 to open your project. 
 
-Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter ErgastAPI repo's [URL](https://github.com/gionoa/ErgastAPI.git). Or you can login Xcode with your GitHub account and just type ErgastAPI to search.
+Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter Formula1API repo's [URL](https://github.com/gionoa/Formula1API.git). Or you can login Xcode with your GitHub account and just type Formula1API to search.
 
 After select the package, you can choose the dependency type (tagged version, branch or commit). As of now, since there's no 1.0.0 release yet, choose `master branch`.
 
