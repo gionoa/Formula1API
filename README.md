@@ -28,6 +28,10 @@ Currently, you can fetch:
 * `Seasons`
 * `Constructors (all, specified season)`
 * `Race Schedule (specified season)`
+* `Race Results (specified season)`
+* `Qualifying Results (specified season),
+* `Pit Stops (specified season), 
+* `Laps(specified season)
 
 *More endpoints will be accessible as development progresses.* 
 
@@ -39,7 +43,7 @@ Access endpoints by the `ErgastAPI` object.
 
 Example: 
 ```
-ErgastAPI.raceSchedule(for: .year(2020)) { result in
+ErgastAPI.allConstructors(for: .year(2020)) { result in
     switch result {
         case .success(let schedule):
             print(schedule)
@@ -47,6 +51,16 @@ ErgastAPI.raceSchedule(for: .year(2020)) { result in
             print(error)
     }
 }
+
+ErgastAPI.constructors { result in
+    switch result {
+        case .success(let schedule):
+            print(schedule)
+        case .failure(let error):
+            print(error)
+    }
+}
+
 ```
 
 ## Licensing
