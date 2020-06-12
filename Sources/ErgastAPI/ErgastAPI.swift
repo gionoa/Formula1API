@@ -173,4 +173,18 @@ public enum ErgastAPI {
             completion(result)
         }
     }
+    
+    public static func laps(for season: Season,
+                            round: String,
+                            lap: String?,
+                            limit: String? = nil,
+                            offset: String? = nil,
+                            completion: @escaping (Result<Laps, ErgastAPIError>) -> Void) {
+        
+        URLSession.shared.fetch(.lapTimes(lap),
+                                for: season,
+                                round: round, limit: limit, offset: offset) { result in
+                                    completion(result)
+        }
+    }
 }
