@@ -40,8 +40,9 @@ extension URLSession {
     ///   - decodingType: Decodable-conforming object to be used for serializing JSON response.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction finishes fetching.
     internal func fetch<T: Decodable>(_ subPath: Path,
-                                      for season: SeasonYear? = nil,
-                                      andRound round: String? = nil,
+                                      for season: Season? = nil,
+                                      round: String? = nil,
+                                      lap: String? = nil,
                                       limit: String? = nil,
                                       offset: String? = nil,
                                       session: URLSession = URLSession.shared,
@@ -49,7 +50,8 @@ extension URLSession {
         
         let endpoint = Endpoint(with: subPath,
                                 for: season,
-                                andRound: round,
+                                round: round,
+                                lap: lap,
                                 limit: limit,
                                 offset: offset)
         let url = endpoint.url
