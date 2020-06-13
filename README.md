@@ -21,7 +21,7 @@ You can't run this library in your own server since it interacts with the live n
 
 ## Features
 
-ErgastAPI provides functions that allow you to access endpoints for data. 
+Formula1API provides functions that allow you to access endpoints for data. 
 
 Currently, you can fetch: 
 * `Circuits (all, specified season)`
@@ -39,11 +39,11 @@ Currently, you can fetch:
 
 Usage of this library within your app or package is simple. 
 
-Access endpoints by the `ErgastAPI` object. 
+Access endpoints by the `Formula1API` object. 
 
 Example: 
 ```
-ErgastAPI.allConstructors(for: .year(2020)) { result in
+Formula1API.allConstructors(for: .year(2020)) { result in
     switch result {
         case .success(let constructors):
             print(schedule)
@@ -52,7 +52,7 @@ ErgastAPI.allConstructors(for: .year(2020)) { result in
     }
 }
 
-ErgastAPI.constructors { result in
+Formula1API.constructors { result in
     switch result {
         case .success(let constructors):
             print(schedule)
