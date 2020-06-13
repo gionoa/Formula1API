@@ -1,5 +1,5 @@
 //
-//  ErgastAPI.swift
+//  Formula1API.swift
 //
 //
 //  Created by Giovanni Noa on 4/28/20.
@@ -18,7 +18,7 @@ public enum Formula1API {
     public static func circuits(for season: Season,
                                 limit: String? = nil,
                                 offset: String? = nil,
-                                completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+                                completion: @escaping (Result<Circuits, APIError>) -> Void) {
         
         URLSession.shared.fetch(.circuits,
                                for: season,
@@ -35,7 +35,7 @@ public enum Formula1API {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func allCircuits(limit: String? = nil,
                                    offset: String? = nil,
-                                   completion: @escaping (Result<Circuits, ErgastAPIError>) -> Void) {
+                                   completion: @escaping (Result<Circuits, APIError>) -> Void) {
         
         URLSession.shared.fetch(.circuits,
                                 limit: limit,
@@ -51,7 +51,7 @@ public enum Formula1API {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func seasons(limit: String? = nil,
                                offset: String? = nil,
-                               completion: @escaping (Result<Seasons, ErgastAPIError>) -> Void) {
+                               completion: @escaping (Result<Seasons, APIError>) -> Void) {
         
         URLSession.shared.fetch(.seasons,
                                 limit: limit,
@@ -67,7 +67,7 @@ public enum Formula1API {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func allConstructors(limit: String? = nil,
                                        offset: String? = nil,
-                                       completion: @escaping (Result<Constructors, ErgastAPIError>) -> Void) {
+                                       completion: @escaping (Result<Constructors, APIError>) -> Void) {
         
         URLSession.shared.fetch(.constructors,
                                 limit: limit,
@@ -85,7 +85,7 @@ public enum Formula1API {
     public static func constructors(for season: Season,
                                     limit: String? = nil,
                                     offset: String? = nil,
-                                    completion: @escaping (Result<Constructors, ErgastAPIError>) -> Void) {
+                                    completion: @escaping (Result<Constructors, APIError>) -> Void) {
         
         URLSession.shared.fetch(.constructors,
                                 for: season,
@@ -104,7 +104,7 @@ public enum Formula1API {
     public static func raceSchedule(for season: Season,
                                     limit: String? = nil,
                                     offset: String? = nil,
-                                    completion: @escaping (Result<RaceSchedule, ErgastAPIError>) -> Void) {
+                                    completion: @escaping (Result<RaceSchedule, APIError>) -> Void) {
 
         URLSession.shared.fetch(.raceSchedule,
                                 for: season,
@@ -123,7 +123,7 @@ public enum Formula1API {
     public static func raceResults(for season: Season,
                                    limit: String? = nil,
                                    offset: String? = nil,
-                                   completion: @escaping(Result<RaceResults, ErgastAPIError>) -> Void) {
+                                   completion: @escaping(Result<RaceResults, APIError>) -> Void) {
         
         URLSession.shared.fetch(.raceResults,
                                 for: season,
@@ -142,7 +142,7 @@ public enum Formula1API {
     public static func qualifyingResults(for season: Season,
                                          limit: String? = nil,
                                          offset: String? = nil,
-                                         completion: @escaping (Result<QualifyingResults, ErgastAPIError>) -> Void) {
+                                         completion: @escaping (Result<QualifyingResults, APIError>) -> Void) {
         
         URLSession.shared.fetch(.qualifyingResults,
                                 for: season,
@@ -163,7 +163,7 @@ public enum Formula1API {
                                 round: String,
                                 limit: String? = nil,
                                 offset: String? = nil,
-                                completion: @escaping (Result<PitStops, ErgastAPIError>) -> Void) {
+                                completion: @escaping (Result<PitStops, APIError>) -> Void) {
         
         URLSession.shared.fetch(.pitStops,
                                 for: season,
@@ -184,10 +184,10 @@ public enum Formula1API {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func laps(for season: Season,
                             round: String,
-                            lap: String?,
+                            lap: String? = nil,
                             limit: String? = nil,
                             offset: String? = nil,
-                            completion: @escaping (Result<Laps, ErgastAPIError>) -> Void) {
+                            completion: @escaping (Result<Laps, APIError>) -> Void) {
         
         URLSession.shared.fetch(.lapTimes(lap),
                                 for: season,
@@ -209,7 +209,7 @@ public enum Formula1API {
                                        round: String? = nil,
                                        limit: String? = nil,
                                        offset: String? = nil,
-                                       completion: @escaping (Result<FinishingStatus, ErgastAPIError>) -> Void) {
+                                       completion: @escaping (Result<FinishingStatus, APIError>) -> Void) {
         
         URLSession.shared.fetch(.finishingStatus,
                                 for: season,
