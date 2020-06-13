@@ -183,8 +183,24 @@ public enum ErgastAPI {
         
         URLSession.shared.fetch(.lapTimes(lap),
                                 for: season,
-                                round: round, limit: limit, offset: offset) { result in
-                                    completion(result)
+                                round: round,
+                                limit: limit,
+                                offset: offset) { result in
+            completion(result)
+        }
+    }
+    
+    public static func finishingStatus(for season: Season,
+                                       round: String? = nil,
+                                       limit: String? = nil,
+                                       offset: String? = nil,
+                                       completion: @escaping (Result<FinishingStatus, ErgastAPIError>) -> Void) {
+        
+        URLSession.shared.fetch(.finishingStatus,
+                                for: season,
+                                limit: limit,
+                                offset: offset) { result in
+            completion(result)
         }
     }
 }
