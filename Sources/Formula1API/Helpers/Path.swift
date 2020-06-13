@@ -125,6 +125,7 @@ extension Path {
         switch self {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
+        case .drivers: return Drivers.self
         case .driverStandings: return DriverStandings.self
         case .finishingStatus: return FinishingStatus.self
         case .lapTimes(_): return Laps.self
