@@ -25,6 +25,9 @@ enum Path {
     /// Driver Standings.
     case driverStandings
     
+    /// Finishing Status
+    case finishingStatus
+    
     /// Lap Times.
     case lapTimes(String?)
     
@@ -60,30 +63,48 @@ extension Path {
         switch self {
         case .circuits:
             return "\(year)/circuits.json"
+            
         case .constructors:
             return "\(year)/constructors.json"
+            
         case .constructorStandings:
             return "\(year)/constructorStandings.json"
+            
         case .drivers:
             return "\(year)/drivers.json"
+            
         case .driverStandings:
             return "\(year)/driverStandings.json"
+            
+        case .finishingStatus:
+            if race != "" {
+                return "\(year)/\(race)/status.json"
+            }
+            
+            return "\(year)/status.json"
+            
         case .lapTimes(let lap):
             if let lap = lap {
                  return "\(year)/\(race)/laps/\(lap).json"
             }
             
             return "\(year)/\(race)/laps.json"
+            
         case .pitStops:
             return "\(year)/\(race)/pitstops.json"
+            
         case .raceSchedule:
             return "\(year).json"
+            
         case .raceResults:
             return "\(year)/results.json"
+            
         case .raceStandings:
             return "\(year)/results.json"
+            
         case .seasons:
             return "/seasons.json"
+            
         case .qualifyingResults:
             return "\(year)/qualifying.json"
         }
@@ -104,6 +125,7 @@ extension Path {
         switch self {
         case .circuits: return Circuits.self
         case .constructors: return Constructors.self
+        case .finishingStatus: return FinishingStatus.self
         case .lapTimes(_): return Laps.self
         case .seasons: return Seasons.self
         case .pitStops: return PitStops.self

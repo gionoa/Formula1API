@@ -8,7 +8,7 @@
 import Foundation
 
 /// Public interface of functions for fetching Formula 1 data from the Ergast REST API.
-public enum ErgastAPI {
+public enum Formula1API {
     /// Fetches Formula 1 Circuits for a given year.
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
@@ -174,6 +174,14 @@ public enum ErgastAPI {
         }
     }
     
+    /// Fetches lap times for a lap within a race.
+    /// - Parameters:
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
+    ///   - round: A race within the season.
+    ///   - lap: Lap of given race.
+    ///   - limit: Property to specify number of items to return per request.
+    ///   - offset: Property to indicate starting point of elements from API request.
+    ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func laps(for season: Season,
                             round: String,
                             lap: String? = nil,
@@ -183,8 +191,31 @@ public enum ErgastAPI {
         
         URLSession.shared.fetch(.lapTimes(lap),
                                 for: season,
-                                round: round, limit: limit, offset: offset) { result in
-                                    completion(result)
+                                round: round,
+                                limit: limit,
+                                offset: offset) { result in
+            completion(result)
+        }
+    }
+    
+    /// Fetches finishing status for given season.
+    /// - Parameters:
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
+    ///   - round: A race within the season.
+    ///   - limit: Property to specify number of items to return per request.
+    ///   - offset: Property to indicate starting point of elements from API request.
+    ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
+    public static func finishingStatus(for season: Season,
+                                       round: String? = nil,
+                                       limit: String? = nil,
+                                       offset: String? = nil,
+                                       completion: @escaping (Result<FinishingStatus, ErgastAPIError>) -> Void) {
+        
+        URLSession.shared.fetch(.finishingStatus,
+                                for: season,
+                                limit: limit,
+                                offset: offset) { result in
+            completion(result)
         }
     }
 }
