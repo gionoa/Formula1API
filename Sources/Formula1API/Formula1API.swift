@@ -95,6 +95,20 @@ public enum Formula1API {
         }
     }
     
+    public static func driverStandings(for season: Season,
+                                       limit: String? = nil,
+                                       offset: String? = nil,
+                                       completion: @escaping (Result<DriverStandings, APIError>) -> Void) {
+        
+        URLSession.shared.fetch(.driverStandings,
+                                for: season,
+                                limit: limit,
+                                offset: limit) { result in
+            completion(result)
+        }
+    }
+                                       
+    
     /// Fetches Formula 1 Race Schedule for a given year.
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
