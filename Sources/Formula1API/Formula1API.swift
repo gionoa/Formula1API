@@ -12,8 +12,8 @@ public enum Formula1API {
     /// Fetches Formula 1 Circuits for a given year.
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
-    ///   - limit: Optional property to specify number of items to return per request.
-    ///   - offset: Optional property to indicate starting point of elements from API request.
+    ///   - limit: Property to specify number of items to return per request.
+    ///   - offset: Property to indicate starting point of elements from API request.
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func circuits(for season: Season,
                                 limit: String? = nil,
@@ -40,6 +40,23 @@ public enum Formula1API {
         URLSession.shared.fetch(.circuits,
                                 limit: limit,
                                 offset: offset) { result in
+            completion(result)
+        }
+    }
+    
+    /// Fetches Formula 1 Drivers - either all, or for a given year.
+    /// - Parameters:
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
+    ///   - limit: Property to specify number of items to return per request.
+    ///   - offset: Property to indicate starting point of elements from API request.
+    ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
+    public static func drivers(for season: Season,
+                               limit: String? = nil,
+                               offset: String? = nil,
+                               completion: @escaping (Result<Drivers, APIError>) -> Void) {
+        
+        URLSession.shared.fetch(.drivers,
+                                for: season) { result in
             completion(result)
         }
     }
