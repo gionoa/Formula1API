@@ -1,5 +1,5 @@
 //
-//  ErgastAPIError.swift
+//  APIError.swift
 //
 //
 //  Created by Giovanni Noa on 4/28/20.
@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Publisher Error
 /// Enum for passing errors during network interactions.
-public enum ErgastAPIError: Error {
+public enum APIError: Error {
     /// A URL error.
     case url(String)
     

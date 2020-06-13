@@ -17,7 +17,7 @@ extension URLSession {
     ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     private func dataTask(_ url: URL,
                           _ session: URLSession,
-                          completion: @escaping ((Result<Data, ErgastAPIError>) -> Void)) {
+                          completion: @escaping ((Result<Data, APIError>) -> Void)) {
         session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 if let error = error {
@@ -46,7 +46,7 @@ extension URLSession {
                                       limit: String? = nil,
                                       offset: String? = nil,
                                       session: URLSession = URLSession.shared,
-                                      completion: @escaping ((Result<T, ErgastAPIError>) -> Void)) {
+                                      completion: @escaping ((Result<T, APIError>) -> Void)) {
         
         let endpoint = Endpoint(with: subPath,
                                 for: season,
