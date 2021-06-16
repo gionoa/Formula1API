@@ -38,7 +38,7 @@ struct CircuitTable: Codable {
     }
 }
 
-struct Circuit: Codable {
+public struct Circuit: Codable {
     let circuitID: String
     let circuitName: String
     let location: Location
