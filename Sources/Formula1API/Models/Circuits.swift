@@ -7,7 +7,7 @@
 
 /// Codable struct, used for serializing JSON from the Circuits endpoint.
 public struct Circuits: Codable {
-    let data: CircuitData
+    public let data: CircuitData
 
     enum CodingKeys: String, CodingKey {
         case data = "MRData"
@@ -19,11 +19,11 @@ extension Circuits {
 }
 
 struct CircuitData: Codable {
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let circuitTable: CircuitTable
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let circuitTable: CircuitTable
 
     enum CodingKeys: String, CodingKey {
         case url
@@ -35,7 +35,7 @@ struct CircuitData: Codable {
 }
 
 struct CircuitTable: Codable {
-    let circuits: [Circuit]
+    public let circuits: [Circuit]
 
     enum CodingKeys: String, CodingKey {
         case circuits = "Circuits"
@@ -44,8 +44,8 @@ struct CircuitTable: Codable {
 
 public struct Circuit: Codable {
     let circuitID: String
-    let circuitName: String
-    let location: Location
+    public let circuitName: String
+    public let location: Location
 
     enum CodingKeys: String, CodingKey {
         case circuitID = "circuitId"
@@ -54,9 +54,9 @@ public struct Circuit: Codable {
     }
 }
 
-struct Location: Codable {
-    let lat: String
-    let long: String
-    let locality: String
-    let country: String
+public struct Location: Codable {
+    public let lat: String
+    public let long: String
+    public let locality: String
+    public let country: String
 }
