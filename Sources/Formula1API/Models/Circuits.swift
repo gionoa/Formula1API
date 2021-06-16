@@ -14,11 +14,11 @@ public struct Circuits: Codable {
     }
 }
 
-extension Circuits {
-    public var circuits: [Circuit] { self.data.circuitTable.circuits }
+public extension Circuits {
+    public var currentCircuits: [Circuit] { self.data.circuitTable.circuits }
 }
 
-struct CircuitData: Codable {
+public struct CircuitData: Codable {
     public let url: String
     public let limit: String
     public let offset: String
@@ -34,7 +34,7 @@ struct CircuitData: Codable {
     }
 }
 
-struct CircuitTable: Codable {
+public struct CircuitTable: Codable {
     public let circuits: [Circuit]
 
     enum CodingKeys: String, CodingKey {
