@@ -14,6 +14,10 @@ public struct Circuits: Codable {
     }
 }
 
+extension Circuits {
+    public var circuits: [Circuit] { self.data.circuitTable.circuits }
+}
+
 struct CircuitData: Codable {
     let url: String
     let limit: String
@@ -38,7 +42,7 @@ struct CircuitTable: Codable {
     }
 }
 
-struct Circuit: Codable {
+public struct Circuit: Codable {
     let circuitID: String
     let circuitName: String
     let location: Location
