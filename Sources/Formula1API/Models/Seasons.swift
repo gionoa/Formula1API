@@ -7,22 +7,22 @@
 
 /// Codable struct, used for serializing JSON from the Seasons endpoint.
 public struct Seasons: Codable {
-    let data: SeasonData
+    public let data: SeasonData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct SeasonData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let seasonTable: SeasonTable
+public struct SeasonData: Codable {
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let seasonTable: SeasonTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case series
         case url
         case limit
@@ -32,15 +32,15 @@ struct SeasonData: Codable {
     }
 }
 
-struct SeasonTable: Codable {
-    let seasons: [F1Season]
+public struct SeasonTable: Codable {
+    public let seasons: [F1Season]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case seasons = "Seasons"
     }
 }
 
-struct F1Season: Codable {
-    let season: String
-    let url: String
+public struct F1Season: Codable {
+    public let season: String
+    public let url: String
 }

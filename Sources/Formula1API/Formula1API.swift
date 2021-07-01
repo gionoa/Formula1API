@@ -56,7 +56,9 @@ public enum Formula1API {
                                completion: @escaping (Result<Drivers, APIError>) -> Void) {
         
         URLSession.shared.fetch(.drivers,
-                                for: season) { result in
+                                for: season,
+                                limit: limit,
+                                offset: offset) { result in
             completion(result)
         }
     }

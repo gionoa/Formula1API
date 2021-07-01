@@ -9,22 +9,24 @@ import Foundation
 
 /// Codable struct, used for serializing JSON from the Constructors endpoint.
 public struct Constructors: Codable {
-    let data: ConstructorsData
+    public let data: ConstructorsData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct ConstructorsData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let constructorTable: ConstructorTable
+public struct ConstructorsData: Codable {
+    public let xmlns: String
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let constructorTable: ConstructorTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
+        case xmlns
         case series
         case url
         case limit
@@ -34,23 +36,23 @@ struct ConstructorsData: Codable {
     }
 }
 
-struct ConstructorTable: Codable {
-    let season: String
-    let constructors: [Constructor]
+public struct ConstructorTable: Codable {
+    public let season: String?
+    public let constructors: [Constructor]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case season
         case constructors = "Constructors"
     }
 }
 
-struct Constructor: Codable {
-    let constructorID: String
-    let url: String
-    let name: String
-    let nationality: String
+public struct Constructor: Codable {
+    public let constructorID: String
+    public let url: String
+    public let name: String
+    public let nationality: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case constructorID = "constructorId"
         case url
         case name

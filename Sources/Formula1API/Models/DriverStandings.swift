@@ -7,24 +7,24 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the DriverStandings endpoint.
 public struct DriverStandings: Codable {
-    let data: DriverStandingsData
+    public let data: DriverStandingsData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-// MARK: - MRData
-struct DriverStandingsData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let standingsTable: StandingsTable
+public struct DriverStandingsData: Codable {
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let standingsTable: StandingsTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case series
         case url
         case limit
@@ -34,35 +34,36 @@ struct DriverStandingsData: Codable {
     }
 }
 
-struct StandingsTable: Codable {
-    let season: String
-    let standingsLists: [StandingsList]
+public struct StandingsTable: Codable {
+    public let season: String?
+    public let standingsLists: [StandingsList]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case season
         case standingsLists = "StandingsLists"
     }
 }
 
-struct StandingsList: Codable {
-    let season, round: String
-    let driverStandings: [DriverStanding]
+public struct StandingsList: Codable {
+    public let season, round: String
+    public let driverStandings: [DriverStanding]
 
-    enum CodingKeys: String, CodingKey {
-        case season, round
+    private enum CodingKeys: String, CodingKey {
+        case season
+        case round
         case driverStandings = "DriverStandings"
     }
 }
 
-struct DriverStanding: Codable {
-    let position: String
-    let positionText: String
-    let points: String
-    let wins: String
-    let driver: Driver
-    let constructors: [Constructor]
+public struct DriverStanding: Codable {
+    public let position: String
+    public let positionText: String
+    public let points: String
+    public let wins: String
+    public let driver: Driver
+    public let constructors: [Constructor]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case position
         case positionText
         case points

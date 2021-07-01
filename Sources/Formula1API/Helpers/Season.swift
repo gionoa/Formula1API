@@ -10,8 +10,11 @@ import Foundation
 // MARK: - Season
 /// Season enum to indicate whether a networking function is to fetch all historical data, or data for a single season.
 public enum Season {
-    /// A year, representing a specific season (1950-2020).
+    /// A year, representing a specific season (1950-2021).
     case year(Int)
+    
+    /// All historical data endpoint (1950-2021).
+    case all
 }
 
 extension Season {
@@ -21,6 +24,8 @@ extension Season {
         switch self {
             case .year(let year):
             return "/\(year)"
+        case .all:
+            return ""
         }
     }
 }

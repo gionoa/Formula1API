@@ -9,7 +9,7 @@
 public struct Circuits: Codable {
     public let data: CircuitData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
@@ -25,7 +25,7 @@ public struct CircuitData: Codable {
     public let total: String
     public let circuitTable: CircuitTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case url
         case limit
         case offset
@@ -37,17 +37,17 @@ public struct CircuitData: Codable {
 public struct CircuitTable: Codable {
     public let circuits: [Circuit]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case circuits = "Circuits"
     }
 }
 
 public struct Circuit: Codable {
-    let circuitID: String
+    public let circuitID: String
     public let circuitName: String
     public let location: Location
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case circuitID = "circuitId"
         case circuitName
         case location = "Location"

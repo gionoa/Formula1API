@@ -7,23 +7,24 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the FinishingStatus endpoint.
 public struct FinishingStatus: Codable {
-    let data: FinishingStatusData
+    public let data: FinishingStatusData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct FinishingStatusData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let statusTable: StatusTable
+public struct FinishingStatusData: Codable {
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let statusTable: StatusTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case series
         case url
         case limit
@@ -33,22 +34,22 @@ struct FinishingStatusData: Codable {
     }
 }
 
-struct StatusTable: Codable {
-    let season: String
-    let status: [Status]
+public struct StatusTable: Codable {
+    public let season: String
+    public let status: [Status]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case season
         case status = "Status"
     }
 }
 
-struct Status: Codable {
-    let statusID: String
-    let count: String
-    let status: String
+public struct Status: Codable {
+    public let statusID: String
+    public let count: String
+    public let status: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case statusID = "statusId"
         case count
         case status

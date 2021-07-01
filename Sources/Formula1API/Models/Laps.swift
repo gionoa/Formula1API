@@ -7,24 +7,24 @@
 
 import Foundation
 
-/// Codable struct, used for serializing JSON from the Lap endpoint.
+/// Codable struct, used for serializing JSON from the Laps endpoint.
 public struct Laps: Codable {
-    let data: LapsData
+    public let data: LapsData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct LapsData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let raceTable: RaceTable
+public struct LapsData: Codable {
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let raceTable: RaceTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case series
         case url
         case limit
@@ -34,22 +34,22 @@ struct LapsData: Codable {
     }
 }
 
-struct LapElement: Codable {
-    let number: String
-    let timings: [Timing]
+public struct LapElement: Codable {
+    public let number: String
+    public let timings: [Timing]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case number
         case timings = "Timings"
     }
 }
 
-struct Timing: Codable {
-    let driverID: String
-    let position: String
-    let time: String
+public struct Timing: Codable {
+    public let driverID: String
+    public let position: String
+    public let time: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case driverID = "driverId"
         case position
         case time
