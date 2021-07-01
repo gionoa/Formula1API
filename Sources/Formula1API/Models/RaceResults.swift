@@ -9,22 +9,22 @@ import Foundation
 
 /// Codable struct, used for serializing JSON from the RaceResults endpoint.
 public struct RaceResults: Codable {
-    let data: RaceResultsData
+    public let data: RaceResultsData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct RaceResultsData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let raceTable: RaceTable
+public struct RaceResultsData: Codable {
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let raceTable: RaceTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case series
         case url
         case limit
@@ -34,18 +34,18 @@ struct RaceResultsData: Codable {
     }
 }
 
-struct RaceResult: Codable {
-    let number: String
-    let position: String
-    let positionText: String
-    let points: String
-    let driver: Driver
-    let constructor: Constructor
-    let grid, laps, status: String
-    let time: ResultTime?
-    let fastestLap: FastestLap
+public struct RaceResult: Codable {
+    public let number: String
+    public let position: String
+    public let positionText: String
+    public let points: String
+    public let driver: Driver
+    public let constructor: Constructor
+    public let grid, laps, status: String
+    public let time: ResultTime?
+    public let fastestLap: FastestLap
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case number
         case position
         case positionText
@@ -58,17 +58,17 @@ struct RaceResult: Codable {
     }
 }
 
-struct Driver: Codable {
-    let driverID: String
-    let permanentNumber: String
-    let code: String
-    let url: String
-    let givenName: String
-    let familyName: String
-    let dateOfBirth: String
-    let nationality: String
+public struct Driver: Codable {
+    public let driverID: String
+    public let permanentNumber: String?
+    public let code: String?
+    public let url: String
+    public let givenName: String
+    public let familyName: String
+    public let dateOfBirth: String
+    public let nationality: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case driverID = "driverId"
         case permanentNumber
         case code
@@ -80,13 +80,13 @@ struct Driver: Codable {
     }
 }
 
-struct FastestLap: Codable {
-    let rank: String
-    let lap: String
-    let time: FastestLapTime
-    let averageSpeed: AverageSpeed
+public struct FastestLap: Codable {
+    public let rank: String
+    public let lap: String
+    public let time: FastestLapTime
+    public let averageSpeed: AverageSpeed
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case rank
         case lap
         case time = "Time"
@@ -94,20 +94,20 @@ struct FastestLap: Codable {
     }
 }
 
-struct AverageSpeed: Codable {
-    let units: Units
-    let speed: String
+public struct AverageSpeed: Codable {
+    public let units: Units
+    public let speed: String
 }
 
-enum Units: String, Codable {
+public enum Units: String, Codable {
     case kph = "kph"
 }
 
-struct FastestLapTime: Codable {
-    let time: String
+public struct FastestLapTime: Codable {
+    public let time: String
 }
 
-struct ResultTime: Codable {
-    let millis: String
-    let time: String
+public struct ResultTime: Codable {
+    public let millis: String
+    public let time: String
 }

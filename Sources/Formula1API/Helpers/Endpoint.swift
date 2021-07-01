@@ -66,11 +66,19 @@ extension Endpoint {
         components.host = ErgastEndpoint.host
         components.path = urlPath
         
-        if let limit = limit,
-           let offset = offset {
-            components.queryItems = [URLQueryItem(name: "limit", value: limit),
-                                     URLQueryItem(name: "offset", value: offset)]
+        var queryItems: [URLQueryItem] = .init()
+        
+        if let limit = limit {
+            let item = URLQueryItem(name: "limit", value: limit)
+            queryItems.append(item)
         }
+        
+        if let offset = offset {
+            let item = URLQueryItem(name: "offset", value: offset)
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
         
         guard let validURL = components.url else { fatalError("Could not construct URL.") }
         

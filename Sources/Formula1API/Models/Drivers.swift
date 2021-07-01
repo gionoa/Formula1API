@@ -7,23 +7,24 @@
 
 import Foundation
 
+/// Codable struct, used for serializing JSON from the Drivers endpoint.
 public struct Drivers: Codable {
-    let data: DriversData
+    public let data: DriversData
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct DriversData: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let driverTable: DriverTable
+public struct DriversData: Codable {
+    public let series: String
+    public let url: String
+    public let limit: String
+    public let offset: String
+    public let total: String
+    public let driverTable: DriverTable
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case series
         case url
         case limit
@@ -33,11 +34,11 @@ struct DriversData: Codable {
     }
 }
 
-struct DriverTable: Codable {
-    let season: String
-    let drivers: [Driver]
+public struct DriverTable: Codable {
+    public let season: String?
+    public let drivers: [Driver]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case season
         case drivers = "Drivers"
     }
