@@ -15,7 +15,7 @@ public struct Circuits: Codable {
 }
 
 public extension Circuits {
-    public var currentCircuits: [Circuit] { self.data.circuitTable.circuits }
+    var currentCircuits: [Circuit] { self.data.circuitTable.circuits }
 }
 
 public struct CircuitData: Codable {
@@ -35,10 +35,12 @@ public struct CircuitData: Codable {
 }
 
 public struct CircuitTable: Codable {
+    public let season: String?
     public let circuits: [Circuit]
 
     private enum CodingKeys: String, CodingKey {
         case circuits = "Circuits"
+        case season
     }
 }
 
