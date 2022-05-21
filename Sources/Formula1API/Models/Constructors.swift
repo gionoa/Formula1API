@@ -23,7 +23,7 @@ public struct ConstructorsData: Codable {
     public let limit: String
     public let offset: String
     public let total: String
-    public let constructorTable: ConstructorTable
+    public let constructorTable: ConstructorTable //
 
     private enum CodingKeys: String, CodingKey {
         case xmlns
