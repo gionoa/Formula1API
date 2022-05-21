@@ -40,6 +40,7 @@ public struct CircuitTable: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case circuits = "Circuits"
+        case season
     }
 }
 
