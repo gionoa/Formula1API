@@ -35,6 +35,7 @@ public struct CircuitData: Codable {
 }
 
 public struct CircuitTable: Codable {
+    public let season: String?
     public let circuits: [Circuit]
 
     private enum CodingKeys: String, CodingKey {
