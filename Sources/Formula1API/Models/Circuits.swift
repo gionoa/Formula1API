@@ -15,7 +15,7 @@ public struct Circuits: Codable {
 }
 
 public extension Circuits {
-    public var currentCircuits: [Circuit] { self.data.circuitTable.circuits }
+    var currentCircuits: [Circuit] { self.data.circuitTable.circuits }
 }
 
 public struct CircuitData: Codable {
