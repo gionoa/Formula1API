@@ -95,7 +95,7 @@ public enum Formula1API {
         }
     }
     
-    /// Fetches Formula 1 Constructors for all seasons throughout history.
+    /// Fetches Formula 1 Constructors for a given season.
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
     ///   - limit: Optional property to specify number of items to return per request.
@@ -114,6 +114,12 @@ public enum Formula1API {
         }
     }
     
+    /// Fetches Formula 1 Driver standings for a given season.
+    /// - Parameters:
+    ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
+    ///   - limit:  Optional property to specify number of items to return per request.
+    ///   - offset: Optional property to indicate starting point of elements from API request.
+    ///   - completion: Asynchronous closure to inject functionality once the network interaction completes.
     public static func driverStandings(for season: Season,
                                        limit: String? = nil,
                                        offset: String? = nil,
