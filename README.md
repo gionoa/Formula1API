@@ -5,7 +5,7 @@
 
 ## Installing / Getting started
 
-> Formula 1 API supports Swift Package Manager. To use SwiftPM, you should use Xcode 11 to open your project. 
+> Formula 1 API supports Swift Package Manager. To use SwiftPM, you should use the most recent version of Xcode to add this project. 
 
 Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter Formula1API repo's [URL](https://github.com/gionoa/Formula1API.git). Or you can login Xcode with your GitHub account and just type Formula1API to search.
 
@@ -39,7 +39,7 @@ Currently, you can fetch:
 
 Usage of this library within your app or package is simple. 
 
-Access endpoints by the `Formula1API` object. 
+Access endpoints via the `Formula1API` object. 
 
 Return closure example: 
 ```swift

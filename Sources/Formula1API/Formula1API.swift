@@ -142,7 +142,7 @@ public enum Formula1API {
         try await URLSession.shared.fetch(.constructors, limit: limit, offset: limit)
     }
     
-    /// Fetches Formula 1 Constructors for all seasons throughout history.
+    /// Fetches Formula 1 Constructors for a given season.
     /// - Parameters:
     ///   - season: Season enum case, specified by an Int, which indicates to fetch data for a given year (1950-2020).
     ///   - limit: Optional property to specify number of items to return per request.
