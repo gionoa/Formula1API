@@ -41,26 +41,26 @@ Usage of this library within your app or package is simple.
 
 Access endpoints via the `Formula1API` object. 
 
-Example: 
+Return closure example: 
+```swift
+Formula1API.constructors(for: .year(2022)) { result in
+    switch result {
+    case .success(let constructors):
+        print(constructors)
+    case .failure(let error):
+        print(error)
+    }
+}
+
 ```
-Formula1API.allConstructors(for: .year(2022)) { result in
-    switch result {
-        case .success(let constructors):
-            print(schedule)
-        case .failure(let error):
-            print(error)
-    }
-}
 
-Formula1API.constructors { result in
-    switch result {
-        case .success(let constructors):
-            print(schedule)
-        case .failure(let error):
-            print(error)
-    }
+Async-await example:
+```swift
+do {
+    let constructors = try await Formula1API.constructors(for: .year(2022))
+} catch error {
+    print(error)
 }
-
 ```
 
 ## Licensing
