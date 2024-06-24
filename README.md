@@ -9,16 +9,6 @@
 
 Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter Formula1API repo's [URL](https://github.com/gionoa/Formula1API.git). Or you can login Xcode with your GitHub account and just type Formula1API to search.
 
-After select the package, you can choose the dependency type (tagged version, branch or commit). As of now, since there's no 1.0.0 release yet, choose `master branch`.
-
-### Initial Configuration
-
-No configuration needed! 
-
-### Deploying / Publishing
-
-You can't run this library in your own server since it interacts with the live network. If you're interested in running your own server to fetch F1 data, check out this [repository](https://github.com/Edivad99/NJS-ErgastF1API).
-
 ## Features
 
 Formula1API provides functions that allow you to access endpoints for data. 
